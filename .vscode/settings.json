@@ -1,0 +1,18 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+  "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/out/**/*.js": true
+  },
+  "prettier.typescriptEnable": [
+    "typescript",
+    "typescriptreact"
+  ],
+  "files.associations": {
+    ".jestrc": "json",
+    "*.config": "json",
+    "CHANGELOG": "markdown"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "name": "datasink",
+  "version": "0.1.0",
+  "description": "Transfer data from a React component to a set of hidden fields for standard form POST.",
+  "main": "./dist/datasink.min.js",
+  "typings": "./typings.d.ts",
+  "devDependencies": {
+    "@types/jest": "^20.0.4",
+    "@types/node": "^8.0.7",
+    "@types/webpack": "^3.0.1",
+    "@types/webpack-merge": "^0.0.4",
+    "awesome-typescript-loader": "^3.2.1",
+    "faker": "^4.1.0",
+    "jest": "^20.0.4",
+    "lodash-ts-webpack-plugin": "^1.1.4",
+    "rimraf": "^2.6.1",
+    "semistandard": "^11.0.0",
+    "source-map-loader": "^0.2.1",
+    "standard": "^10.0.2",
+    "ts-jest": "^20.0.6",
+    "ts-node": "^3.1.0",
+    "tslint": "^5.4.3",
+    "tslint-config-standard": "^6.0.1",
+    "tslint-eslint-rules": "^4.1.1",
+    "typedoc": "^0.7.1",
+    "typescript": "^2.4.2",
+    "typescript-babel-jest": "^1.0.5",
+    "webpack": "^3.0.0",
+    "webpack-livereload-plugin": "^0.11.0",
+    "webpack-merge": "^4.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/overneath42/datasink.git"
+  },
+  "keywords": [
+    "javascript",
+    "typescript",
+    "react"
+  ],
+  "author": "Justin Toon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/overneath42/datasink/issues"
+  },
+  "scripts": {
+    "test": "jest",
+    "docs": "typedoc --out docs/ src/ --name 'Datasink' --readme README.md --target ES5",
+    "dev": "webpack --config ./config/webpack.dev.ts",
+    "build": "rimraf ./dist && webpack --config ./config/webpack.prod.ts"
+  },
+  "homepage": "https://github.com/overneath42/datasink#readme",
+  "jest": {
+    "transform": {
+      "^.+\\.(ts|tsx)$": "typescript-babel-jest"
+    },
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/(?!lodash-es)"
+    ],
+    "testRegex": "/__tests__/.*\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "."
+    ]
+  },
+  "dependencies": {
+    "react": "^15.6.1"
+  }
+}
