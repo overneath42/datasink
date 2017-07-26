@@ -7,5 +7,16 @@ export namespace Global {
 }
 
 export namespace Datasink {
+  type Options = {
+    keys: string[];
+    dataProp?: string;
+  };
 
+  interface StateData {
+    [key: string]: any;
+  }
+
+  interface Props {
+
+  }
 }

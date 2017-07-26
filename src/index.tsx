@@ -1,5 +1,11 @@
-import React from 'react';
+import { Datasink } from '../typings.d';
 
-export default class Datasink extends React.Component {
+import ds from './datasink.module';
 
-}
+const Datasink = (props: Datasink.Props) => {
+  ds(props).save();
+
+  return false;
+};
+
+export default Datasink;
