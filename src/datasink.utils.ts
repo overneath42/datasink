@@ -69,9 +69,7 @@ export function prepareData(data: any, prop?: string): string {
         ? // if the first item is an object, use the lookup property to reduce
           // the array to a set of single values. `prop` can be one of several options
           // which are evaluated at runtime.
-          data.map((item: Ds.StateData):
-            | Ds.StateData
-            | Ds.HiddenField => {
+          data.map((item: Ds.StateData): string => {
             return item[prop || 'id'];
           })
         : // otherwise, just stringify the original data set

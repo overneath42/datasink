@@ -4,16 +4,17 @@
 
 export namespace Datasink {
   interface HiddenField {
+    [key: string]: string;
     fieldName: string;
-    propName: string;
-    attrName: string;
+    value: string;
   }
 
   interface StateData {
-    [key: string]: HiddenField | StateData;
+    [key: string]: string;
   }
 
   interface Props {
-
+    form: HTMLFormElement;
+    fieldData: HiddenField[];
   }
 }

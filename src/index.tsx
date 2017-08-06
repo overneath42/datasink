@@ -1,11 +1,19 @@
-import { Datasink } from '../typings.d';
+import { Datasink as Ds } from '../typings.d';
+import React from 'react';
 
 import ds from './datasink.module';
 
-const Datasink = (props: Datasink.StateData): null => {
-  ds(props).save();
+export default class Datasink extends React.Component {
+  props: Ds.Props;
 
-  return null;
-};
+  componentDidUpdate() {
+    const { form, fieldData } = this.props;
+    ds(form, fieldData).sink();
+  }
 
-export default Datasink;
+  render(): null {
+    // the `Datasink` component doesn't render anything, so we return `null`
+    // @see https://facebook.github.io/react/docs/react-component.html#render
+    return null;
+  }
+}
