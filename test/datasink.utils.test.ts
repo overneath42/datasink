@@ -1,5 +1,4 @@
 import 'mocha';
-import jsdom from 'jsdom';
 import { expect } from 'chai';
 import * as utils from '../src/datasink.utils';
 import sampleFieldName from './fixtures/sample-field-name';
@@ -26,44 +25,29 @@ describe('decodeName', () => {
   });
 });
 
-// describe('createHiddenField', () => {
-//   const { JSDOM } = jsdom;
+describe('createHiddenField', () => {
+  let input: HTMLInputElement;
+  let name: string;
+  let value: string;
 
-//   before(() => {
-//     globalAny.document = new JSDOM(
-//       '<!DOCTYPE html><html><head></head><body></body></html>'
-//     );
-//     global.window = document.parentWindow;
-//     global.navigator = { userAgent: 'node.js' };
-//   });
+  beforeEach(() => {
+    name = 'sampleName';
+  });
 
-//   let input: HTMLInputElement;
-//   let name: string;
-//   let value: string;
+  it('creates fields properly', () => {
+    input = utils.createHiddenField(name);
 
-//   beforeEach(() => {
-//     name = 'sampleName';
-//   });
+    expect(input.type).to.equal('hidden');
+    expect(input.name).to.equal(name);
+  });
 
-//   it('creates fields properly', () => {
-//     input = utils.createHiddenField(name);
+  it('assigns a value when provided one', () => {
+    value = 'sample value';
+    input = utils.createHiddenField(name, value);
 
-//     expect(input.type).to.equal('hidden');
-//     expect(input.name).to.equal(name);
-//   });
-
-//   it('assigns a value when provided one', () => {
-//     value = 'sample value';
-//     input = utils.createHiddenField(name, value);
-
-//     expect(input.value).to.equal(value);
-//   });
-
-//   after(() => {
-//     window.close();
-//     delete global.document;
-//   });
-// });
+    expect(input.value).to.equal(value);
+  });
+});
 
 describe('prepareData', () => {
   it('should create a JSON array of numbers from an array of objects', () => {
