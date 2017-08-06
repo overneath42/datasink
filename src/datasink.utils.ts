@@ -1,6 +1,5 @@
-import { Datasink } from '../typings.d';
-import { isObject, isArray, isNull, isUndefined } from 'lodash-es';
-
+import { Datasink as Ds } from '../typings.d';
+import { isObject, isNull, isUndefined } from 'lodash';
 import { transform } from 'inflection';
 
 /**
@@ -29,29 +28,23 @@ export function decodeName(name: string): string[] {
  * as well as an optional value.
  *
  * @export
- * @param {Object} field
- * @param {string} field.fieldName The value for the `name` attribute.
- * @param {string} field.propName The value for the data attribute.
- * @param {string} field.attrName The attribute name to create, provided as `camelCase`.
- * @param {string} [value] A value to save to the target data attribute.
+ * @param {string} fieldName The value for the `name` attribute.
+ * @param {string} [value] A value to save to the target field.
  *
- * @return {HTMLElement} Returns a hidden field element.
+ * @return {HTMLInputElement} Returns a hidden field element.
  */
 export function createHiddenField(
-  field: Datasink.HiddenField,
-  value: string
-): HTMLElement {
-  const { fieldName, propName, attrName } = field;
-  const name = decodeName(transform(attrName, ['capitalize'])).join('');
+  fieldName: string,
+  value?: string
+): HTMLInputElement {
+  const name = decodeName(transform(fieldName, ['capitalize'])).join('');
   const id = transform(name, ['underscore']);
-  const attr = transform(name, ['underscore', 'dasherize']);
 
   let input = document.createElement('input');
 
   input.setAttribute('type', 'hidden');
   input.setAttribute('name', fieldName);
   input.setAttribute('id', id);
-  input.setAttribute(attr, propName);
 
   if (value) {
     input.setAttribute('value', value);
@@ -70,15 +63,15 @@ export function createHiddenField(
  * @returns {string} Returns a formatted value to insert into a hidden field.
  */
 export function prepareData(data: any, prop?: string): string {
-  if (isArray(data)) {
+  if (Array.isArray(data)) {
     return JSON.stringify(
       isObject(data[0])
         ? // if the first item is an object, use the lookup property to reduce
           // the array to a set of single values. `prop` can be one of several options
           // which are evaluated at runtime.
-          data.map((item: Datasink.StateData):
-            | Datasink.StateData
-            | Datasink.HiddenField => {
+          data.map((item: Ds.StateData):
+            | Ds.StateData
+            | Ds.HiddenField => {
             return item[prop || 'id'];
           })
         : // otherwise, just stringify the original data set

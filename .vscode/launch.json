@@ -1,0 +1,30 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "preLaunchTask": "tsc",
+      "name": "Launch Program",
+      "program": "${workspaceRoot}\\out\\index.js",
+      "cwd": "${workspaceRoot}",
+      "outFiles": []
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "preLaunchTask": "tsc",
+      "name": "Run Tests",
+      "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
+      "args": [
+        "${workspaceRoot}/out/test/**/*.js"
+      ],
+      "cwd": "${workspaceRoot}/out",
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "sourceMaps": true,
+      "outFiles": []
+    }
+  ]
+}

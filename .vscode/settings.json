@@ -14,5 +14,6 @@
     ".jestrc": "json",
     "*.config": "json",
     "CHANGELOG": "markdown"
-  }
+  },
+  "material-icon-theme.angular.iconsEnabled": false
 }
