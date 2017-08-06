@@ -4,8 +4,6 @@ import * as utils from '../src/datasink.utils';
 import sampleFieldName from './fixtures/sample-field-name';
 import arrayOfObjects from './fixtures/array-of-objects';
 
-const globalAny: any = global;
-
 describe('decodeName', () => {
   const { words, name } = sampleFieldName();
   let testResult: string[];
