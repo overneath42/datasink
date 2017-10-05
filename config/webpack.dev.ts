@@ -1,10 +1,9 @@
 import * as webpack from 'webpack';
 import * as webpackMerge from 'webpack-merge';
-import * as LiveReloadPlugin from 'webpack-livereload-plugin';
 import * as path from 'path';
 import commonConfig from './webpack.common';
 
-declare var __dirname;
+declare var __dirname: string;
 
 const config = function(): webpack.Configuration {
   return webpackMerge(commonConfig, {
@@ -18,8 +17,7 @@ const config = function(): webpack.Configuration {
     watchOptions: {
       ignored: /node_modules/,
       poll: true
-    },
-    plugins: [new LiveReloadPlugin({ appendScriptTag: true })]
+    }
   });
 };
 

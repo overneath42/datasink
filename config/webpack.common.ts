@@ -1,7 +1,7 @@
 import * as webpack from 'webpack';
 
 const commonConfig: webpack.Configuration = {
-  entry: './src/index.ts',
+  entry: './src/index.tsx',
   resolve: {
     extensions: ['.ts', '.js', '.json']
   },
