@@ -10,7 +10,7 @@ const config = function(): webpack.Configuration {
     devtool: 'eval-source-map',
     output: {
       path: path.resolve(__dirname, '../demo/js'),
-      filename: 'innerface.bundle.js',
+      filename: 'datasink.bundle.js',
       sourceMapFilename: '[file].map'
     },
     watch: true,

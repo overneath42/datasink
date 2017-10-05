@@ -10,7 +10,7 @@ const config = function(): webpack.Configuration {
     devtool: 'source-map',
     output: {
       path: path.resolve(__dirname, '../dist'),
-      filename: 'innerface.min.js'
+      filename: 'datasink.min.js'
     },
     plugins: [
       new webpack.optimize.UglifyJsPlugin({ compress: true, comments: false })
